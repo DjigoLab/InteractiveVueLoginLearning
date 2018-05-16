@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+
+    <title>DjigoLogin</title>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}
+        <form action="" method="post">
+            <div class="form-field username">
+
+                <label for="name">Username</label>
+                <input type="name" name="name" v-model="name">
+            </div>
+            <div class="form-field email">
+
+                <label for="email">Email</label>
+                <input type="email" name="email" v-model="email">
+            </div>
+            <div class="form-field password">
+
+                <label for="password">Password</label>
+                <input type="password" name="password" v-model="password">
+            </div>
+            <div class="form-field confirmPassword">
+
+                <label for="repeatPassword">Confirm Password</label>
+                <input type="password" name="repeatPassword" v-model="repeatPassword">
+            </div>
+            <div class="form-field terms">
+                <input type="checkbox" name="terms" v-model="accept">
+                <label for="terms">Accept Terms</label>
+            </div>
+            <button type="submit">Accept</button>
+        </form>
+        <p v-if="accept == true">Your name is {{name}}, with the e-mail {{email}}, using a codificated
+            password, which is {{password}}, and you have accepted  our terms.
+        </p>
+        <p v-else="">
+                Your name is {{name}}, with the e-mail {{email}}, using a codificated
+                password, which is {{password}}, and you have NOT ACCEPTED our terms.
+        </p>
+        <p v-if="password === repeatPassword">
+            Oh, by the way, your passwords are equal, good.
+        </p>
+        <p v-else>
+            Hey, seems that you wrote your confirmation password wrong...
+        </p>
+    </div>
+</body>
+
+<script>new Vue({
+        el: "#app",
+        data: {
+            msg: 'Hello, stranger.',
+            name: 'a',
+            email: '',
+            password: '',
+            repeatPassword:'',
+            accept: false
+        },
+        methods: {}
+    })
+</script>
+
+<style>
+    form {
+        display: flex;
+        flex-flow: column;
+        padding: 15px;
+    }
+
+    .form-field {
+        display: grid;
+    }
+
+    p{
+        padding: 15px;
+    }
+</style>
+
+</html>
